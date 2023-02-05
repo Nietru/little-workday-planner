@@ -3,19 +3,57 @@
 // in the html.
 
 /** JQUERY VARIABLES: */
-var currentDay = $('#currentDay');  //
+var container = $('#container-lg'); // getting the main body/hourly display of the planner.
+var currentDay = $('#currentDay');  // getting the time display in the header.
+var saveBtn = $('.saveBtn');
+var hourBox = $('.hour');
+var textArea = $('.description');
+
+var currentTime = dayjs().hour(); // to go with if statement below:
+
+let workHours = [   // created an array for working hours, hours are 0-23.
+   "8",
+   "9",
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+];
 
 
-/** FUNCTIONS */
+function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
 
-// function to handle displaying the day in the header of the app
-function dayToday() {
-  var today = dayjs().format('MM/DD/YY dddd');    //dayjs() means current day/time
-  currentDay.text(today);
+  $.each(hourBox, function() { 
+    $(this).text(workHours);
+
+  });
+  
+
+  console.log(hourBox);
+//   for (var j = 0; j < workHours.length; j++) {
+
+//     hourBox = workHours[j];
+
+//     // console.log(workHours);
+//     console.log(hourBox);
+
+//     if (workHours[j] == currentTime) {
+//       textArea.addClass('.present');
+//     }
+//     else if (workHours[j] > currentTime) {
+//       textArea.addClass('.future');
+//     }
+//     else if (workHours[j] < currentTime) {
+//       textArea.addClass('.past');
+//     }
+//   }
 }
 
 
-$(function () {
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -34,12 +72,27 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
 
 
-/** EVENT LISTENERS */
+/** FUNCTIONS */
+
+// function to handle displaying the day in the header of the app
+function dayToday() {
+  var rightNow = dayjs().format('hh:mm [on] dddd MM/DD/YY');    //dayjs() means current day/time
+  currentDay.text(rightNow);
+}
+  
+
+/** EVENT LISTENERS */          // ---------- TRYING TO FIGURE THIS OUT!!! ----------
+var saveBtn = $(this);
+$(container).on('click') 
+  var userInput = $(this.textArea).val();
+  var timeBlock = $(this.hourBox).attr('id');
+
+  localStorage.setItem(timeBlock, userInput);
 
 
 /** APP INIT */
-
-dayToday();   // runs dayToday function giving us the current date/day of the week in the header section.
+// runs dayToday function giving us the current date/day of the week in the header section.
+dayToday();
+renderSchedule();
