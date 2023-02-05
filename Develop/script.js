@@ -53,7 +53,6 @@ function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ---
 }
 
 
-
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -84,12 +83,17 @@ function dayToday() {
   
 
 /** EVENT LISTENERS */          // ---------- TRYING TO FIGURE THIS OUT!!! ----------
-var saveBtn = $(this);
-$(container).on('click') 
-  var userInput = $(this.textArea).val();
-  var timeBlock = $(this.hourBox).attr('id');
 
-  localStorage.setItem(timeBlock, userInput);
+// this works but fills in all of the text boxes with the same thing in the browser.
+$(textArea).each(function(){
+  $(this).val(localStorage.getItem(this.id));
+});
+
+
+$(textArea).on("change", function () {
+
+  localStorage.setItem(this.id, $(this).val());
+});
 
 
 /** APP INIT */
