@@ -1,6 +1,20 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+/** JQUERY VARIABLES: */
+var currentDay = $('#currentDay');  //
+
+
+/** FUNCTIONS */
+
+// function to handle displaying the day in the header of the app
+function dayToday() {
+  var today = dayjs().format('MM/DD/YY dddd');    //dayjs() means current day/time
+  currentDay.text(today);
+}
+
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -21,3 +35,11 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+
+/** EVENT LISTENERS */
+
+
+/** APP INIT */
+
+dayToday();   // runs dayToday function giving us the current date/day of the week in the header section.
