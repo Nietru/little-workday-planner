@@ -9,9 +9,11 @@ var saveBtn = $('.saveBtn');
 var hourBox = $('.hour');
 var textArea = $('.description');
 
-let workHours = [   // created an object for working hours, hours are 0-23.
-  "8",
-  "9",
+var currentTime = dayjs().hour(); // to go with if statement below:
+
+let workHours = [   // created an array for working hours, hours are 0-23.
+   "8",
+   "9",
   "10",
   "11",
   "12",
@@ -19,27 +21,35 @@ let workHours = [   // created an object for working hours, hours are 0-23.
   "14",
   "15",
   "16",
-]
+];
 
 
-function renderSchedule () {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
+function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
 
-  for (j = 0; j < workHours.length; j++) {
+  $.each(hourBox, function() { 
+    $(this).text(workHours);
 
-    hourBox = workHours[j];
+  });
+  
 
-    var currentTime = dayjs().hour(); // to go with if statement below:
+  console.log(hourBox);
+//   for (var j = 0; j < workHours.length; j++) {
 
-    if (workHours[j] == currentTime) {
-      textArea.addClass('.present');
-    }
-    else if (workHours[j] > currentTime) {
-      textArea.addClass('.future');
-    }
-    else if (workHours[j] < currentTime) {
-      textArea.addClass('.past');
-    }
-  }
+//     hourBox = workHours[j];
+
+//     // console.log(workHours);
+//     console.log(hourBox);
+
+//     if (workHours[j] == currentTime) {
+//       textArea.addClass('.present');
+//     }
+//     else if (workHours[j] > currentTime) {
+//       textArea.addClass('.future');
+//     }
+//     else if (workHours[j] < currentTime) {
+//       textArea.addClass('.past');
+//     }
+//   }
 }
 
 
