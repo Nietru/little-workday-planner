@@ -83,6 +83,9 @@ function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ---
 /** FUNCTIONS */
 
 // function to handle displaying the day in the header of the app
+
+
+
 function dayToday() {
   var rightNow = dayjs().format('hh:mm [on] dddd MM/DD/YY');    //dayjs() means current day/time
   currentDay.text(rightNow);
@@ -91,11 +94,10 @@ function dayToday() {
 
 /** EVENT LISTENERS */          // ---------- TRYING TO FIGURE THIS OUT!!! ----------
 
-// this works but fills in all of the text boxes with the same thing in the browser.
+// this is working to store user input in the text-area of the html once i gave the textAreas unique IDs.
 $(textArea).each(function(){
   $(this).val(localStorage.getItem(this.id));
 });
-
 
 $(textArea).on("change", function () {
 
