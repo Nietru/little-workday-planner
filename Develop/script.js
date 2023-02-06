@@ -6,7 +6,6 @@
 
 /** JQUERY VARIABLES: */
 var currentDay = $('#currentDay');
-var currentTime = dayjs().hour(); // to go with if statement below:
 
 let workHours = {   // created an array for working hours, hours are 0-23.
   // i think i need to do something with day js... and then a jquery object loop?..
@@ -19,7 +18,7 @@ let workHours = {   // created an array for working hours, hours are 0-23.
   hourBox7: "2pm",
   hourBox8: "3pm",
   hourBox9: "4pm",
-}
+};
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -37,25 +36,18 @@ let workHours = {   // created an array for working hours, hours are 0-23.
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-
 
  // Resource for possibly changing color after hour changes current past or future:  https://jqueryui.com/addClass/
 
-
 /** FUNCTIONS */
-
-$(function renderSchedule() {
+$(function () {
   var container = $('#container-lg');
-
   // dynamically create the content inside of schedule container:
   var row = $('div'); // container for the three boxes: hour, text, and button. <-- append to row later
   var timeBox = $('<div>');
   var textArea = $('<textarea>');
   var button = $('<button>');
   var saveIcon = $('<i>');
-
   //add the classes and styling to the elements:
   timeBox.addClass('col-2 col-md-1 hour text-center py-3');
 
@@ -69,7 +61,9 @@ $(function renderSchedule() {
   container.append(row);
   row.append(timeBox, textArea, button);
   button.append(saveIcon);
-
+});
+// Displays the current day and current time in the header section
+$("#currentDay").text(dayjs().format("[Today is]  MMM DD, YYYY [at] h:mm:a"));
   //   function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
   //   $.each(hourBox, function() { 
   //     $(this).text(workHours.length());
@@ -82,18 +76,6 @@ $(function renderSchedule() {
   //   currentDay.text(rightNow);
   // });
   /** EVENT LISTENERS */ // ---------- TRYING TO FIGURE THIS OUT!!! ----------
-  // this is working to store user input in the text-area of the html once i gave the textAreas unique IDs.
-  $(textArea).each(function () {
-    $(this).val(localStorage.getItem(this.id));
-  });
-
-  $(textArea).on("change", function () {
-
-    localStorage.setItem(this.id, $(this).val());
-  });
-
-
-});
 
 /** APP INIT */
-renderSchedule();
+();
