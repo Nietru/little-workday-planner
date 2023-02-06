@@ -1,4 +1,4 @@
-# Mini-Work-Day-Planner
+# Little Workday Planner
 
 ## Description
 
@@ -14,7 +14,7 @@ Please reference the project repository for license information.
 
 ## Deployment
 
-https://nietru.github.io/mini-day-planner/
+https://nietru.github.io/little-workday-planner/
 
 ## user story
 
