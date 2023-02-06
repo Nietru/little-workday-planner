@@ -16,6 +16,7 @@ var textAreaFuture = $('#text-area-future');
 var currentTime = dayjs().hour(); // to go with if statement below:
 
 let workHours = {   // created an array for working hours, hours are 0-23.
+  // i think i need to do something with day js... and then a jquery object loop?..
   hourBox1: "8am",
   hourBox2: "9am",
   hourBox3: "10am",
@@ -23,8 +24,8 @@ let workHours = {   // created an array for working hours, hours are 0-23.
   hourBox5: "12am",
   hourBox6: "1pm",
   hourBox7: "2pm",
-  hourBox8: "15",
-  hourBox9: "16",
+  hourBox8: "3pm",
+  hourBox9: "4pm",
 }
 
 
