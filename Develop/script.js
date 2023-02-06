@@ -2,17 +2,10 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+// const dayjs = require("dayjs");
+
 /** JQUERY VARIABLES: */
-var container = $('#container-lg'); // getting the main body/hourly display of the planner.
-var currentDay = $('#currentDay');  // getting the time display in the header.
-var saveBtn = $('.saveBtn');
-var hourBox = $('.hour');
-var textArea = $('.description');
-var textAreaPast = $('#text-area-past');
-var textAreaPresent = $('#text-area-present');
-var textAreaFuture = $('#text-area-future');
-
-
+var currentDay = $('#currentDay');
 var currentTime = dayjs().hour(); // to go with if statement below:
 
 let workHours = {   // created an array for working hours, hours are 0-23.
@@ -27,36 +20,6 @@ let workHours = {   // created an array for working hours, hours are 0-23.
   hourBox8: "3pm",
   hourBox9: "4pm",
 }
-
-
-function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
-
-  $.each(hourBox, function() { 
-    $(this).text(workHours);
-
-  });
-  
-
-  console.log(hourBox);
-//   for (var j = 0; j < workHours.length; j++) {
-
-//     hourBox = workHours[j];
-
-//     // console.log(workHours);
-//     console.log(hourBox);
-
-//     if (workHours[j] == currentTime) {
-//       textArea.addClass('.present');
-//     }
-//     else if (workHours[j] > currentTime) {
-//       textArea.addClass('.future');
-//     }
-//     else if (workHours[j] < currentTime) {
-//       textArea.addClass('.past');
-//     }
-//   }
-}
-
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -83,30 +46,54 @@ function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ---
 
 /** FUNCTIONS */
 
-// function to handle displaying the day in the header of the app
+$(function renderSchedule() {
+  var container = $('#container-lg');
+
+  // dynamically create the content inside of schedule container:
+  var row = $('div'); // container for the three boxes: hour, text, and button. <-- append to row later
+  var timeBox = $('<div>');
+  var textArea = $('<textarea>');
+  var button = $('<button>');
+  var saveIcon = $('<i>');
+
+  //add the classes and styling to the elements:
+  timeBox.addClass('col-2 col-md-1 hour text-center py-3');
+
+  textArea.addClass('col-8 col-md-10 #textArea description rows=3').attr('rows', '3');
+
+  button.addClass('col-2 col-md-1 btn .saveBtn').attr('aria-label', "save");
+
+  saveIcon.addClass('fas fa-save').attr('aria-hidden', "true");
+
+  //append elements to the dom:
+  container.append(row);
+  row.append(timeBox, textArea, button);
+  button.append(saveIcon);
+
+  //   function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
+  //   $.each(hourBox, function() { 
+  //     $(this).text(workHours.length());
+  //   });
+  // }  
+  //   console.log(hourBox);
+  // function to handle displaying the day in the header of the app
+  // $(function dayToday() {
+  //   var rightNow = dayjs().format('hh:mm [on] dddd MM/DD/YY');    //dayjs() means current day/time
+  //   currentDay.text(rightNow);
+  // });
+  /** EVENT LISTENERS */ // ---------- TRYING TO FIGURE THIS OUT!!! ----------
+  // this is working to store user input in the text-area of the html once i gave the textAreas unique IDs.
+  $(textArea).each(function () {
+    $(this).val(localStorage.getItem(this.id));
+  });
+
+  $(textArea).on("change", function () {
+
+    localStorage.setItem(this.id, $(this).val());
+  });
 
 
-
-function dayToday() {
-  var rightNow = dayjs().format('hh:mm [on] dddd MM/DD/YY');    //dayjs() means current day/time
-  currentDay.text(rightNow);
-}
-  
-
-/** EVENT LISTENERS */          // ---------- TRYING TO FIGURE THIS OUT!!! ----------
-
-// this is working to store user input in the text-area of the html once i gave the textAreas unique IDs.
-$(textArea).each(function(){
-  $(this).val(localStorage.getItem(this.id));
 });
-
-$(textArea).on("change", function () {
-
-  localStorage.setItem(this.id, $(this).val());
-});
-
 
 /** APP INIT */
-// runs dayToday function giving us the current date/day of the week in the header section.
-dayToday();
 renderSchedule();
