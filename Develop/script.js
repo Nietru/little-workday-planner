@@ -15,17 +15,17 @@ var textAreaFuture = $('#text-area-future');
 
 var currentTime = dayjs().hour(); // to go with if statement below:
 
-let workHours = [   // created an array for working hours, hours are 0-23.
-   "8",
-   "9",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
-  "15",
-  "16",
-];
+let workHours = {   // created an array for working hours, hours are 0-23.
+  hourBox1: "8am",
+  hourBox2: "9am",
+  hourBox3: "10am",
+  hourBox4: "11am",
+  hourBox5: "12am",
+  hourBox6: "1pm",
+  hourBox7: "2pm",
+  hourBox8: "15",
+  hourBox9: "16",
+}
 
 
 function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
