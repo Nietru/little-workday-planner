@@ -2,6 +2,8 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+const dayjs = require("dayjs");
+
 /** JQUERY VARIABLES: */
 // var container = $('#container-lg'); declared below
 var currentDay = $('#currentDay');
@@ -53,19 +55,22 @@ let workHours = {   // created an array for working hours, hours are 0-23.
 
 /** FUNCTIONS */
 
-$(function () {
-  var header = $('')  //do header part after body is finished!!
+$(function renderSchedule() {
   var container = $('#container-lg');
 
 // dynamically create the content inside of schedule container:
   var row = $('div');   // container for the three boxes: hour, text, and button. <-- append to row later
-  var hour = $('<div>');
+  var timeBox = $('<div>');
   var textArea = $('<textarea>');
   var button = $('<button>');
   var saveIcon = $('<i>');
 
-  //add the styling to the elements:
-  
+  //add the classes and styling to the elements:
+  timeBox.addClass('col-2 col-md-1 hour text-center py-3').format(dayjs, 'h');
+
+  textArea.addClass('col-8 col-md-10 #textArea description rows=3').attr(rows=3);
+
+  button.addClass('col-2 col-md-1 btn .saveBtn').attr(aria-label, "save");
 
   //append elements to the dom:
   container.append(row);
@@ -79,10 +84,10 @@ $(function () {
 //   console.log(hourBox);
 
 // function to handle displaying the day in the header of the app
-function dayToday() {
+$(function dayToday() {
   var rightNow = dayjs().format('hh:mm [on] dddd MM/DD/YY');    //dayjs() means current day/time
   currentDay.text(rightNow);
-}
+});
   
 
 /** EVENT LISTENERS */          // ---------- TRYING TO FIGURE THIS OUT!!! ----------
@@ -103,4 +108,4 @@ $(textArea).on("change", function () {
 /** APP INIT */
 // runs dayToday function giving us the current date/day of the week in the header section.
 dayToday();
-// renderSchedule();
+renderSchedule();
