@@ -1,4 +1,20 @@
-# Mini-Day-Planner
+# Mini-Work-Day-Planner
+
+## Description
+
+## Usage
+
+## Credits
+
+## Screen-capture
+
+## License
+
+Please reference the project repository for license information.
+
+## Deployment
+
+https://nietru.github.io/mini-day-planner/
 
 ## user story
 

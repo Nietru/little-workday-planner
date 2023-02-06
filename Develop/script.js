@@ -8,6 +8,10 @@ var currentDay = $('#currentDay');  // getting the time display in the header.
 var saveBtn = $('.saveBtn');
 var hourBox = $('.hour');
 var textArea = $('.description');
+var textAreaPast = $('#text-area-past');
+var textAreaPresent = $('#text-area-present');
+var textAreaFuture = $('#text-area-future');
+
 
 var currentTime = dayjs().hour(); // to go with if statement below:
 
@@ -71,6 +75,9 @@ function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ---
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
+
+
+ // Resource for possibly changing color after hour changes current past or future:  https://jqueryui.com/addClass/
 
 
 /** FUNCTIONS */
