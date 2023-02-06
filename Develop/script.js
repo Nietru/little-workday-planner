@@ -8,20 +8,24 @@ var currentDay = $('#currentDay');  // getting the time display in the header.
 var saveBtn = $('.saveBtn');
 var hourBox = $('.hour');
 var textArea = $('.description');
+var textAreaPast = $('#text-area-past');
+var textAreaPresent = $('#text-area-present');
+var textAreaFuture = $('#text-area-future');
+
 
 var currentTime = dayjs().hour(); // to go with if statement below:
 
-let workHours = [   // created an array for working hours, hours are 0-23.
-   "8",
-   "9",
-  "10",
-  "11",
-  "12",
-  "13",
-  "14",
-  "15",
-  "16",
-];
+let workHours = {   // created an array for working hours, hours are 0-23.
+  hourBox1: "8am",
+  hourBox2: "9am",
+  hourBox3: "10am",
+  hourBox4: "11am",
+  hourBox5: "12am",
+  hourBox6: "1pm",
+  hourBox7: "2pm",
+  hourBox8: "15",
+  hourBox9: "16",
+}
 
 
 function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ----------
@@ -73,9 +77,15 @@ function renderSchedule() {        // ---------- TRYING TO FIGURE THIS OUT!! ---
   // TODO: Add code to display the current date in the header of the page.
 
 
+ // Resource for possibly changing color after hour changes current past or future:  https://jqueryui.com/addClass/
+
+
 /** FUNCTIONS */
 
 // function to handle displaying the day in the header of the app
+
+
+
 function dayToday() {
   var rightNow = dayjs().format('hh:mm [on] dddd MM/DD/YY');    //dayjs() means current day/time
   currentDay.text(rightNow);
@@ -84,11 +94,10 @@ function dayToday() {
 
 /** EVENT LISTENERS */          // ---------- TRYING TO FIGURE THIS OUT!!! ----------
 
-// this works but fills in all of the text boxes with the same thing in the browser.
+// this is working to store user input in the text-area of the html once i gave the textAreas unique IDs.
 $(textArea).each(function(){
   $(this).val(localStorage.getItem(this.id));
 });
-
 
 $(textArea).on("change", function () {
 
