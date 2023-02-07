@@ -7,7 +7,7 @@
 $(function () {
   var currentDay = $("#currentDay");
   // Displays the current day and current time in the header section
-  $("#currentDay").text(dayjs().format("[Today is]  MMM DD, YYYY [at] hh:mm"));
+  $("#currentDay").text(dayjs().format("[Today is]  MMM DD, YYYY [at] hh:mma"));
   // array for hour blocks on left of text area
   // dynamically create the content inside of schedule container:
   // for (i = 0; i < timeBoxes.length; i++) {
@@ -61,8 +61,16 @@ $(function () {
     console.log(time);
     var description = $(this).siblings(".description").val();
     console.log(description);
-
+    // save to local storage
     localStorage.setItem(time, description);
   });
+  $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+  $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+  $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+  $("#hour-12 .description").val(localStorage.getItem("hour-12"));
   $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+  $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+  $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+  $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 });
