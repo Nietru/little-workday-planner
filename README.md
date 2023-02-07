@@ -2,11 +2,27 @@
 
 ## Description
 
-## Usage
+A daily work schedule planner that stores text in hourly blocks as a to-do list.
+
+For this project the goal was to create this daily work schedule with jquery and have the timeblocks color coded
+
+to represent the current, past, and future hour blocks in red, grey, and green styling respectively.
+
+I learned how to make the save button on click event listener store user input to local storage with jquery during this project.
 
 ## Credits
 
+My UNH coding teacher Nicole Thomas and her teaching assistant Robert Hoffman.
+
+I got extra help from my classmate/colleague Carter Michaud, https://github.com/Cmeesh11
+
+, and my tutor Sheetal Srikumar.
+
+Thank you!!
+
 ## Screen-capture
+
+![Photo of the schedule webpage with rows for each workday hour, and area for user input, and a save button.](./assets/images/screen-captures/Capture1.PNG?raw=true "Optional Title")
 
 ## License
 
